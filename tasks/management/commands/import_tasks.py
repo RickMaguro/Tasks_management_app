@@ -1,4 +1,4 @@
-# your_app/management/commands/import_tasks_from_csv.py
+# import the data from Excel.csv
 import pandas as pd
 from django.core.management.base import BaseCommand
 from tasks.models import Task

@@ -10,7 +10,7 @@ def landing_page(request):
 
 @login_required
 def dashboard_page(request):
-    # Group tasks by due date and count them, truncating to the date only
+    # Group tasks by due date and count them
     tasks_due_dates = Task.objects.filter(due_by__gte=now(), due_by__lte=now() + timedelta(days=30)) \
                                   .annotate(date=TruncDate('due_by')) \
                                   .values('date') \
@@ -29,6 +29,6 @@ def dashboard_page(request):
         'tasks_due_dates': tasks_due_dates,
         'task_count_by_priority': task_count_by_priority,
         'urgent_tasks': urgent_tasks,
-        'tasks': Task.objects.all(),  # Include all tasks for the table
+        'tasks': Task.objects.all(), 
     }
     return render(request, 'dashboard_page.html', context)
