@@ -1,0 +1,166 @@
+<!-- tasks/templates/tasks/task_page.html -->
+<html>
+<head>
+    <title>Adding Tasks</title>
+    <!-- Include Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow-y: auto; /* Allows scrolling if the content is too tall */
+        }
+
+        .task-container {
+            background-color: #f8f8f8;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            width: 500px; /* Increased width */
+            max-height: 90vh; /* Ensure the container doesn't exceed the page height */
+            overflow-y: auto; /* Allows scrolling inside the container if needed */
+        }
+
+        .task-container h2 {
+            background-color: #d3d3d3;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        .task-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .task-container input, 
+        .task-container select, 
+        .task-container button {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #d3d3d3;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+        }
+
+        .task-container button {
+            background-color: #d3d3d3;
+            border: none;
+            cursor: pointer;
+        }
+
+        .navigation-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .navigation-buttons form {
+            margin: 0 10px;
+        }
+
+        .navigation-buttons button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .navigation-buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        .logout-button {
+            text-align: center;
+        }
+
+        .logout-button button {
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-button button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="task-container">
+        <h2>Adding Tasks</h2>
+
+        <!-- Display form errors -->
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <strong>Please correct the errors below:</strong>
+                <ul>
+                    {% for field, errors in form.errors.items %}
+                        <li>{{ field }}: {{ errors|escape }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <!-- Form to add a new task -->
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+
+        <!-- Navigation buttons -->
+        <div class="navigation-container">
+            <div class="navigation-buttons">
+                <form action="{% url 'landing_page' %}">
+                    <button type="submit">Back to Home</button>
+                </form>
+
+                <form action="{% url 'dashboard_page' %}">
+                    <button type="submit">Go to Dashboard</button>
+                </form>
+            </div>
+
+            <!-- Logout button -->
+            <div class="logout-button">
+                <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        // Initialize Flatpickr on the date input field
+        flatpickr("input[name='due_by']", {
+            enableTime: true, 
+            dateFormat: "d-m-y H:i", 
+            minDate: "today",  // Prevent selecting past dates
+        });
+    </script>
+</body>
+</html>
