@@ -3,6 +3,10 @@ A public landing page with links to the other two pages
 ![Tasks management Home](https://github.com/user-attachments/assets/ac6e7ff6-44ac-4059-8e6c-72e09506c9ce)
 
 
+An authorization page for inserting the password
+![Login page](https://github.com/user-attachments/assets/961651ae-c4b0-4f05-8e2e-aefba5c8f38c)
+
+
 A password required data entry page for adding a task
 Including:
 ▪ User email

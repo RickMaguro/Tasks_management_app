@@ -1,5 +1,4 @@
 from django import forms
-from django.utils import timezone 
 from .models import Task
 
 class TaskForm(forms.ModelForm):

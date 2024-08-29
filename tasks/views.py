@@ -13,5 +13,5 @@ def task_page(request):
     else:
         form = TaskForm()
 
-    tasks = Task.objects.all()  # All tasks to display
+    tasks = Task.objects.all()
     return render(request, 'tasks/task_page.html', {'form': form, 'tasks': tasks})
