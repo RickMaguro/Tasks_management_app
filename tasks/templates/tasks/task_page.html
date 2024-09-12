@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>Adding Tasks</title>
+    {% load static %}
     <!-- Include Flatpickr CSS for calender pop out-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
@@ -125,7 +126,7 @@
         {% endif %}
 
         <!-- Form to add a new task -->
-        <form method="post">
+        <form id="task-form" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Submit</button>
@@ -153,6 +154,7 @@
         </div>
     </div>
 
+    <script type="module" src="{% static 'js/add_task.js' %}"></script>
     <!-- Include Flatpickr JS -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>

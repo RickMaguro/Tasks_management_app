@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tasks',
-    'slick_reporting',
-    "crispy_forms",
-    "crispy_bootstrap4",
+    #'slick_reporting',
+    #"crispy_forms",
+    #"crispy_bootstrap4",
 ]
 
 MIDDLEWARE = [
