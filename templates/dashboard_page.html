@@ -149,7 +149,7 @@
         <!-- Urgent Tasks Number Metric -->
         <div class="urgent-tasks">
             <h2>Urgent Tasks</h2>
-            <p style="font-size: 48px; color: red;">{{ urgent_tasks }}</p>
+            <p style="font-size: 48px; color: red;">{{ urgent_tasks.count }}</p>
         </div>
 
         <!-- Pie Chart: Tasks by Priority -->
@@ -220,7 +220,7 @@
         var tasksDueLineChart = new Chart(ctxLine, {
             type: 'line',
             data: {
-                labels: [{% for item in tasks_due_dates %}"{{ item.date|date:'Y-m-d' }}"{% if not forloop.last %},{% endif %}{% endfor %}],
+                labels: [{% for item in tasks_due_dates %}"{{ item.date }}"{% if not forloop.last %},{% endif %}{% endfor %}],
                 datasets: [{
                     label: 'Tasks Due',
                     data: [{% for item in tasks_due_dates %}{{ item.count }}{% if not forloop.last %},{% endif %}{% endfor %}],

@@ -132,3 +132,5 @@ LOGIN_REDIRECT_URL = 'landing_page'  # URL to redirect to after login
 LOGOUT_REDIRECT_URL = 'landing_page'  # Redirect users to the landing page after logout
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+API_BASE_URL = 'http://127.0.0.1:8000/tasks/api'

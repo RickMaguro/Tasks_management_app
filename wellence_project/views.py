@@ -4,26 +4,27 @@ from tasks.models import Task
 from django.utils.timezone import now, timedelta
 from django.db.models import Count
 from django.db.models.functions import TruncDate
+from django.conf import settings
+import requests
 
 def landing_page(request):
     return render(request, 'landing_page.html')
 
 @login_required
 def dashboard_page(request):
-    # Group tasks by due date and count them
-    tasks_due_dates = Task.objects.filter(due_by__gte=now(), due_by__lte=now() + timedelta(days=30)) \
-                                  .annotate(date=TruncDate('due_by')) \
-                                  .values('date') \
-                                  .annotate(count=Count('id')) \
-                                  .order_by('date')
+    api_base_url = settings.API_BASE_URL
 
-    # Count tasks by priority within the next 30 days
-    task_count_by_priority = Task.objects.filter(due_by__gte=now(), due_by__lte=now() + timedelta(days=30)) \
-                                         .values('priority') \
-                                         .annotate(count=Count('id'))
+    due_dates_response = requests.get(f"{api_base_url}/tasks/due_dates/")
+    priority_response = requests.get(f"{api_base_url}/tasks/priority/")
+    urgent_response = requests.get(f"{api_base_url}/tasks/urgent/")
 
-    # Count urgent tasks within the next 30 days
-    urgent_tasks = Task.objects.filter(is_urgent=True, due_by__gte=now(), due_by__lte=now() + timedelta(days=30)).count()
+    due_dates_response.raise_for_status()
+    priority_response.raise_for_status()
+    urgent_response.raise_for_status()
+
+    tasks_due_dates = due_dates_response.json()
+    task_count_by_priority = priority_response.json()
+    urgent_tasks = urgent_response.json()
 
     context = {
         'tasks_due_dates': tasks_due_dates,
