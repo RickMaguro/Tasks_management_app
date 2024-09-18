@@ -1,6 +1,7 @@
 from ninja import Schema, ModelSchema
 from .models import Task
 from datetime import date
+from typing import Optional
 
 class TaskSchema(ModelSchema):
     class Meta:
@@ -20,3 +21,10 @@ class UrgentTasksSchema(Schema):
 
 class TaskNotFoundSchema(Schema):
     message: str
+
+class UpdateTaskSchema(Schema):
+    user_email: Optional[str] = None
+    task: Optional[str] = None
+    due_by: Optional[date] = None
+    priority: Optional[int] = None
+    is_urgent: Optional[bool] = None
