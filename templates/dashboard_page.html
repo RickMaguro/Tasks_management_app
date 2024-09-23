@@ -219,7 +219,20 @@
         // fetches the data for the next 30 days from the get endpoint
         const getData = async () => {
             const api_base_url = "{{ api_base_url|escapejs }}";
-            const response = await fetch(`${api_base_url}/tasks/`);
+            const response = await fetch(`${api_base_url}/tasks/`, {
+                method: "GET",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}"
+                }
+            });
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error("Error fetching tasks:", errorText);
+                throw new Error("Failed to fetch tasks");
+            }
             const taskData = await response.json();
             return taskData;
         }
