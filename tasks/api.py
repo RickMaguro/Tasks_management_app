@@ -19,7 +19,8 @@ def add_task(request, data: TaskSchema):
 @api.get("/tasks/", response=List[TaskSchema])
 def get_tasks(request):
     now = timezone.now()
-    tasks = Task.objects.filter(due_by__gte=now, due_by__lte=now + timedelta(days=30)).all()
+    tasks = Task.objects.filter(due_by__gte=now,
+        due_by__lte=now + timedelta(days=30)).all()
     return tasks
 
 # PUT updates a task by id
