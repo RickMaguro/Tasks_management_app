@@ -25,6 +25,7 @@ class Command(BaseCommand):
                 is_urgent=row['is_urgent']
             )
             task.save()
-            self.stdout.write(self.style.SUCCESS(f'Successfully imported task {task.task}'))
+            self.stdout.write(self.style.
+                SUCCESS(f'Successfully imported task {task.task}'))
 
         self.stdout.write(self.style.SUCCESS('Successfully imported all tasks'))
