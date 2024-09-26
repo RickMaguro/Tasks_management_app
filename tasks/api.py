@@ -1,7 +1,6 @@
 from typing import List
 from django.shortcuts import get_object_or_404
 from ninja import NinjaAPI
-from ninja.security import django_auth, HttpBearer
 from datetime import timedelta
 from django.utils import timezone
 from .models import Task
@@ -35,8 +34,8 @@ async def add_task(request, data: TaskSchema):
 @api.get("/tasks/", response=List[TaskSchema], auth=async_auth)
 async def get_tasks(request):
     now = timezone.now()
-    tasks_queryset = Task.objects.filter(due_by__gte=now, due_by__lte=now + timedelta(days=30))
-    tasks = await sync_to_async(list)(tasks_queryset)
+    tasks = Task.objects.filter(due_by__gte=now,
+        due_by__lte=now + timedelta(days=30)).all()
     return tasks
 
 # PUT updates a task by id
