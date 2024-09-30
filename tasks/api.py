@@ -1,7 +1,6 @@
 from typing import List
 from django.shortcuts import get_object_or_404
 from ninja import NinjaAPI
-from ninja.security import django_auth, HttpBearer
 from datetime import timedelta
 from django.utils import timezone
 from .models import Task
@@ -28,14 +27,22 @@ async def async_auth(request):
 # POST creates a new task
 @api.post("/tasks/", response={201: TaskSchema}, auth=async_auth)
 async def add_task(request, data: TaskSchema):
-    task = Task.objects.acreate(**data.dict())
-    return task
+    task = await Task.objects.acreate(**data.dict())
+    response = {
+        "user_email": task.user_email,  
+        "task": task.task,
+        "due_by": task.due_by,
+        "priority": task.priority,
+        "is_urgent": task.is_urgent,
+    }
+    return response
 
 # GET returns the tasks due in the next 30 days
 @api.get("/tasks/", response=List[TaskSchema], auth=async_auth)
 async def get_tasks(request):
     now = timezone.now()
-    tasks_queryset = Task.objects.filter(due_by__gte=now, due_by__lte=now + timedelta(days=30))
+    tasks_queryset = Task.objects.filter(due_by__gte=now,
+        due_by__lte=now + timedelta(days=30))
     tasks = await sync_to_async(list)(tasks_queryset)
     return tasks
 
