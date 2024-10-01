@@ -25,10 +25,11 @@ document.getElementById("task-form").addEventListener("submit", function(e) {
         is_urgent: document.getElementById("id_is_urgent").checked,
     }
 
-    console.log(JSON.stringify(taskData));
+    console.log(JSON.stringify("form data: ", taskData));
 
     fetch("api/tasks/", {
         method: "POST",
+        credentials: "include",
         headers: {
             "Content-Type": "application/json",
             "X-CSRFToken": "{{ csrf_token }}"
