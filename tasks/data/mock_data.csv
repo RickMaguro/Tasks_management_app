@@ -1,0 +1,20 @@
+user_email,task,due_by,priority,is_urgent
+maria.garcia@example.com,Schedule client demo,2024-11-17 08:24:00,1,False
+john.smith@example.com,Update project documentation,2024-11-24 10:59:00,1,True
+david.lee@example.com,Plan team-building activity,2024-11-29 14:22:00,3,False
+jane.doe@example.com,Submit timesheet,2024-11-10 07:37:00,2,True
+alex.jones@example.com,Conduct performance reviews,2024-11-12 13:58:00,3,False
+jane.doe@example.com,Code review for new feature,2024-10-16 22:23:00,1,True
+alex.jones@example.com,Complete project report,2024-11-04 23:15:00,3,False
+john.smith@example.com,Client follow-up meeting,2024-10-28 06:35:00,1,True
+david.lee@example.com,Organize codebase cleanup,2024-11-05 22:34:00,1,False
+maria.garcia@example.com,Prepare presentation,2024-11-24 12:09:00,1,False
+alex.jones@example.com,Complete project report,2024-10-29 20:44:00,3,True
+maria.garcia@example.com,Conduct performance reviews,2024-10-09 05:40:00,1,True
+john.smith@example.com,Update project documentation,2024-11-10 19:20:00,2,True
+david.lee@example.com,Client follow-up meeting,2024-10-16 12:56:00,2,False
+jane.doe@example.com,Submit timesheet,2024-10-04 16:15:00,3,True
+maria.garcia@example.com,Organize codebase cleanup,2024-11-03 22:04:00,2,False
+john.smith@example.com,Plan team-building activity,2024-10-10 17:37:00,2,True
+david.lee@example.com,Prepare presentation,2024-10-26 10:21:00,2,False
+jane.doe@example.com,Update project documentation,2024-11-10 09:29:00,3,False
