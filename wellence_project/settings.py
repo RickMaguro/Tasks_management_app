@@ -91,10 +91,10 @@ ASGI_APPLICATION = 'wellence_project.asgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'task_db',  
-        'USER': 'postgres',  
-        'PASSWORD': 'Jjk123!*',  
-        'HOST': 'db',  
+        'NAME': 'ahmed',  
+        'USER': 'ahmed@ahmed',  
+        'PASSWORD': 'Db1234!*',  
+        'HOST': 'ahmed.postgres.database.azure.com',  
         'PORT': '5432',  
     }
 }

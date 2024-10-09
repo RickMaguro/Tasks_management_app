@@ -12,22 +12,8 @@ services:
     environment:
       - DEBUG=True
       - DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1
-      - DB_NAME=task_db
-      - DB_USER=postgres
-      - DB_PASSWORD=Jjk123!*
-      - DB_HOST=db
+      - DB_NAME=ahmed
+      - DB_USER=ahmed@ahmed
+      - DB_PASSWORD=Db1234!*
+      - DB_HOST=ahmed.postgres.database.azure.com
       - DB_PORT=5432
-    depends_on:
-      - db
-    
-  db:
-    image: postgres:17
-    environment:
-      POSTGRES_DB: task_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Jjk123!*
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-volumes:
-  postgres_data:
