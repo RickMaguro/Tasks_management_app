@@ -22,4 +22,4 @@ jobs:
 
     - name: Run Migrations
       run: |
-        az containerapp revision run --name ahmed --resource-group internship --command "python manage.py migrate"
+        az containerapp exec --name ahmed --resource-group internship --command "python manage.py migrate"
