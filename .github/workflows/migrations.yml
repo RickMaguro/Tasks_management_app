@@ -1,10 +1,14 @@
 name: Run Migrations
 
 on:
-  workflow_run:
-    workflows: ["Docker Image CI"]  # Replace with the name of your main deployment workflow
-    types:
-      - completed
+    push:
+        branches:
+          - main
+          - Azure
+    pull_request:
+        branches:
+          - main
+          - Azure
 
 jobs:
   migrate:
