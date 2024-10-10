@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-avz3r0+&v@(n#=qfu7q9!x)qr14j4!j2dqy(gx&f_2uuc&mfv3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'ahmed.calmpebble-d0eee67f.uksouth.azurecontainerapps.io'
+]
 
 
 # Application definition
