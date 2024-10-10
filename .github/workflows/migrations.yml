@@ -1,0 +1,21 @@
+name: Run Migrations
+
+on:
+  workflow_run:
+    workflows: ["Docker Image CI"]  # Replace with the name of your main deployment workflow
+    types:
+      - completed
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Run Migrations
+      run: |
+        az containerapp revision run --name ahmed --resource-group internship --command "python manage.py migrate"
