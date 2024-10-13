@@ -11,9 +11,9 @@ RUN poetry config virtualenvs.create false \
 
 COPY . /app/
 
-ENV SUPERUSER_USERNAME=ahmed
-ENV SUPERUSER_EMAIL=ahmed.abdulq02@gmail.com
-ENV SUPERUSER_PASSWORD=ahm123!*
+ENV DJANGO_SUPERUSER_USERNAME=ahmed
+ENV DJANGO_SUPERUSER_EMAIL=ahmed.abdulq02@gmail.com
+ENV DJANGO_SUPERUSER_PASSWORD=ahm123!*
 
 EXPOSE 8000
 
