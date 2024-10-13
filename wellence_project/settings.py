@@ -166,4 +166,4 @@ LOGOUT_REDIRECT_URL = 'landing_page'  # Redirect users to the landing page after
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 #API_BASE_URL = 'http://127.0.0.1:8000/tasks/api'
-API_BASE_URL = 'https://ahmed.calmpebble-d0eee67f.uksouth.azurecontainerapps.io/tasks/api/tasks/'
+API_BASE_URL = 'https://ahmed.calmpebble-d0eee67f.uksouth.azurecontainerapps.io/tasks/api'
