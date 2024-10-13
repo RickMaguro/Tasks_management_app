@@ -65,6 +65,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
+    'https://ahmed.calmpebble-d0eee67f.uksouth.azurecontainerapps.io',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -164,4 +165,5 @@ LOGOUT_REDIRECT_URL = 'landing_page'  # Redirect users to the landing page after
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-API_BASE_URL = 'http://127.0.0.1:8000/tasks/api'
+#API_BASE_URL = 'http://127.0.0.1:8000/tasks/api'
+API_BASE_URL = 'https://ahmed.calmpebble-d0eee67f.uksouth.azurecontainerapps.io/tasks/api/tasks/'
